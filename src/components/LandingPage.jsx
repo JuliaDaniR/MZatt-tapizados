@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import { FaWhatsapp, FaInstagram, FaBars, FaFacebook } from "react-icons/fa";
 import GalleryWithCarousel from "./GalleryWithCarousel";
 import { Sun, Moon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 const LandingPage = () => {
   const whatsappPhone = import.meta.env.VITE_WHATSAPP_PHONE;
   const facebookURL = import.meta.env.VITE_FACEBOOK_URL;
+  const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -85,7 +88,9 @@ const LandingPage = () => {
             className="button hero-button"
             href="#gallery"
             onClick={() =>
-              document.querySelector("#gallery").scrollIntoView({ behavior: "smooth" })
+              document
+                .querySelector("#gallery")
+                .scrollIntoView({ behavior: "smooth" })
             }
           >
             Ver Galeria de Imagenes
@@ -160,7 +165,7 @@ const LandingPage = () => {
           <button
             className="button hero-button"
             style={{ marginTop: "2rem" }}
-            onClick={() => (window.location.href = "/catalogo")}
+            onClick={() => navigate("/catalogo")} 
           >
             Ver Catálogo
           </button>
