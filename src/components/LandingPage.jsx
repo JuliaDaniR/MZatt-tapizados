@@ -63,13 +63,9 @@ const LandingPage = () => {
       *Solicitud de Presupuesto*  
       📌 *Nombre:* ${name}  
       📧 *Email:* ${email}  
+      🛋️ *Titulo del Producto:* ${selectedProduct.title}
       🔖 *Código del producto:* ${productCode}  
       📝 *Mensaje:* ${message}  
-      ${
-        selectedProduct.image
-          ? `🖼 *Imagen del Producto:* ${selectedProduct.image}`
-          : ""
-      }
     `;
 
     const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(
@@ -80,7 +76,7 @@ const LandingPage = () => {
     event.target.reset(); 
 
     // Limpiar selectedProduct del estado y localStorage si es necesario
-    setSelectedProduct({ code: "", image: "" });
+    setSelectedProduct({ code: "", title: "" });
     localStorage.removeItem("selectedProduct");
   };
 
