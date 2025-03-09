@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const GalleryWithCarousel = () => {
   const images = [
@@ -16,51 +16,23 @@ const GalleryWithCarousel = () => {
     "/base+respaldo12.png",
     "/base+respaldo13.png",
     "/base+respaldo14.png",
-    "/base+respaldo+baul1.png",
-    "/base+respaldo+baul2.jpg",
-    "/melamina1.jpg",
-    "/melamina2.jpg",
-    "/melamina3.jpg",
-    "/melamina4.jpg",
-    "/melamina5.jpg",
-    "/melamina6.jpg",
-    "/melamina7.jpg",
-    "/melamina8.jpg",
-    "/respaldo+baul1.png",
-    "/respaldo+baul2.png",
-    "/respaldo+baul3.png",
-    "/respaldo+baul4.png",
-    "/respaldo1.jpg",
-    "/respaldo2.png",
-    "/respaldo3.png",
-    "/respaldo5.png",
-    "/respaldo6.png",
-    "/respaldo7.png",
-    "/respaldo8.png",
-    "/respaldo9.png",
-    "/respaldo10.png",
-    "/respaldo11.png",
-    "/respaldo12.png",
-    "/respaldo13.png",
-    "/respaldo14.png",
-    "/respaldo15.png",
-    "/respaldo16.png",
-    "/respaldo17.png",
-    "/respaldo18.png",
-    "/respaldo19.png",
-    "/respaldo20.png",
-    "/silla1.jpg",
-    "/silla2.jpg",
-    "/baul1.png",
-    "/baul2.png",
   ];
 
   const carouselRef = useRef(null);
   const [scrollAmount, setScrollAmount] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
 
+  // Detectar si el usuario está en móvil
   useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
+
+  // Desplazamiento automático (solo en escritorio)
+  useEffect(() => {
+    if (isMobile) return; // Evita el scroll automático en móviles
+
     const interval = setInterval(() => {
       if (carouselRef.current) {
         const container = carouselRef.current;
@@ -81,7 +53,7 @@ const GalleryWithCarousel = () => {
     }, 50);
 
     return () => clearInterval(interval);
-  }, [scrollAmount]);
+  }, [scrollAmount, isMobile]);
 
   // Función para ir hacia atrás
   const handlePrev = () => {
@@ -128,14 +100,14 @@ const GalleryWithCarousel = () => {
     if (!touchStartX || !touchEndX) return;
 
     const difference = touchStartX - touchEndX;
-    
+
     if (difference > 50) {
       handleNext(); // Deslizar hacia la izquierda → Siguiente imagen
     } else if (difference < -50) {
       handlePrev(); // Deslizar hacia la derecha → Imagen anterior
     }
 
-    // Reiniciar valores
+    // Reiniciar valores táctiles
     setTouchStartX(0);
     setTouchEndX(0);
   };
