@@ -580,6 +580,10 @@ button:hover {
     padding: 1rem 0;
   }
 
+  .logo {
+    margin-left: 0;
+  }
+
   .carousel-button {
     display: none;
   }
