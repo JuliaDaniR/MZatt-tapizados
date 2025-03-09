@@ -56,99 +56,47 @@ const GalleryWithCarousel = () => {
   ];
 
   const carouselRef = useRef(null);
-  const [scrollAmount, setScrollAmount] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [touchStartX, setTouchStartX] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [touchStartX, setTouchStartX] = useState(null);
 
-  // Detectar si el usuario está en móvil
+  // Verifica si es móvil
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Desplazamiento automático (solo en escritorio)
-  useEffect(() => {
-    if (isMobile) return; // Evita el scroll automático en móviles
-
-    const interval = setInterval(() => {
-      if (carouselRef.current) {
-        const container = carouselRef.current;
-        const scrollWidth = container.scrollWidth;
-        const clientWidth = container.clientWidth;
-
-        if (scrollAmount + clientWidth >= scrollWidth) {
-          setScrollAmount(0);
-        } else {
-          setScrollAmount((prev) => prev + 2);
-        }
-
-        container.scrollTo({
-          left: scrollAmount,
-          behavior: "smooth",
-        });
-      }
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, [scrollAmount, isMobile]);
-
-  // Función para ir hacia atrás
-  const handlePrev = () => {
+  // Función para mover el carrusel con botones
+  const scrollCarousel = (direction) => {
     if (carouselRef.current) {
-      const newScrollAmount = Math.max(
-        scrollAmount - carouselRef.current.clientWidth / 2,
-        0
-      );
-      setScrollAmount(newScrollAmount);
-      carouselRef.current.scrollTo({
-        left: newScrollAmount,
-        behavior: "smooth",
-      });
+      const container = carouselRef.current;
+      const scrollAmount = container.clientWidth * 0.8; // Se mueve el 80% del ancho visible
+      container.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
     }
   };
 
-  // Función para ir hacia adelante
-  const handleNext = () => {
-    if (carouselRef.current) {
-      const newScrollAmount = Math.min(
-        scrollAmount + carouselRef.current.clientWidth / 2,
-        carouselRef.current.scrollWidth - carouselRef.current.clientWidth
-      );
-      setScrollAmount(newScrollAmount);
-      carouselRef.current.scrollTo({
-        left: newScrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
+  // Manejo del toque en móviles
+  const handleTouchStart = (e) => setTouchStartX(e.touches[0].clientX);
 
-  // Manejar inicio del toque
-  const handleTouchStart = (e) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  // Manejar fin del toque
   const handleTouchEnd = (e) => {
+    if (!touchStartX) return;
     const touchEndX = e.changedTouches[0].clientX;
     const difference = touchStartX - touchEndX;
 
     if (difference > 50) {
-      handleNext(); // Deslizar hacia la izquierda → Siguiente imagen
+      scrollCarousel(1); // Deslizar a la izquierda → siguiente imagen
     } else if (difference < -50) {
-      handlePrev(); // Deslizar hacia la derecha → Imagen anterior
+      scrollCarousel(-1); // Deslizar a la derecha → imagen anterior
     }
 
-    // Reiniciar valores táctiles
-    setTouchStartX(0);
+    setTouchStartX(null);
   };
 
   return (
     <section id="gallery" className="gallery">
       <h2>Galería</h2>
       <div className="carousel-container">
-        <button className="carousel-button prev" onClick={handlePrev}>
+        <button className="carousel-button prev" onClick={() => scrollCarousel(-1)}>
           ‹
         </button>
         <div
@@ -158,15 +106,10 @@ const GalleryWithCarousel = () => {
           onTouchEnd={handleTouchEnd}
         >
           {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`Imagen ${index + 1}`}
-              className="carousel-image"
-            />
+            <img key={index} src={image} alt={`Imagen ${index + 1}`} className="carousel-image" />
           ))}
         </div>
-        <button className="carousel-button next" onClick={handleNext}>
+        <button className="carousel-button next" onClick={() => scrollCarousel(1)}>
           ›
         </button>
       </div>
