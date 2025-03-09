@@ -4,7 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 const CatalogPage = () => {
   const navigate = useNavigate();
-  const [selectedProduct, setSelectedProduct] = useState({ code: "", title: "" });
+  const [selectedProduct, setSelectedProduct] = useState({
+    code: "",
+    title: "",
+  });
   const [selectedImage, setSelectedImage] = useState(null);
 
   const products = [
@@ -293,8 +296,7 @@ const CatalogPage = () => {
   const handleBudgetRequest = (code, title) => {
     setSelectedProduct({ code, title });
     localStorage.setItem("selectedProduct", JSON.stringify({ code, title }));
-    console.log("Producto seleccionado:", { code, title });
-  
+
     navigate("/");
 
     setTimeout(() => {
@@ -302,9 +304,9 @@ const CatalogPage = () => {
       if (budgetSection) {
         budgetSection.scrollIntoView({ behavior: "smooth" });
       }
-    }, 100); 
+    }, 100);
   };
-  
+
   const openImage = (image) => {
     setSelectedImage(image);
   };
@@ -316,31 +318,40 @@ const CatalogPage = () => {
   return (
     <div className="catalog-container">
       <nav className="navbar">
-        <img src="/logo.png" alt="MZatt" className="logo" onClick={() => window.location.href = "/"} />
+        <img
+          src="/logo.png"
+          alt="MZatt"
+          className="logo"
+          onClick={() => (window.location.href = "/")}
+        />
         <h1 className="hero-title">Diseño y Confort para su hogar</h1>
       </nav>
 
       <header className="catalog-header">
         <h1>Catálogo de Productos</h1>
-        <p>Descubre todos nuestros productos con diseños exclusivos y calidad garantizada.</p>
+        <p>
+          Descubre todos nuestros productos con diseños exclusivos y calidad
+          garantizada.
+        </p>
       </header>
 
       <section className="products-grid">
         {products.map((product, index) => (
           <div className="product-card" key={index}>
-            <img 
-              src={product.image} 
-              alt={`Producto ${product.codigo}`} 
+            <img
+              src={product.image}
+              alt={`Producto ${product.codigo}`}
               onClick={() => openImage(product.image)}
               className="clickable-image"
             />
             <h3>{product.title}</h3>
             <p>{product.description}</p>
             <p className="product-code">
-              Código: {product.codigo} <span className="price">{product.price}</span>
+              Código: {product.codigo}{" "}
+              <span className="price">{product.price}</span>
             </p>
-            <button 
-              className="button" 
+            <button
+              className="button"
               onClick={() => handleBudgetRequest(product.codigo, product.title)}
             >
               Presupuestar
@@ -358,7 +369,9 @@ const CatalogPage = () => {
       )}
 
       <footer className="catalog-footer">
-        <button onClick={() => window.history.back()} className="button">Volver</button>
+        <button onClick={() => window.history.back()} className="button">
+          Volver
+        </button>
       </footer>
     </div>
   );

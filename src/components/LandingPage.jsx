@@ -18,7 +18,6 @@ const LandingPage = () => {
   useEffect(() => {
     const storedProduct =
       JSON.parse(localStorage.getItem("selectedProduct")) || {};
-    console.log("Producto recuperado al cargar:", storedProduct); 
     if (storedProduct.code) {
       setSelectedProduct(storedProduct);
     }
@@ -44,14 +43,6 @@ const LandingPage = () => {
     const message = event.target.message.value.trim();
     const productCode = selectedProduct.code;
 
-    console.log("Datos del formulario:", {
-      name,
-      email,
-      productCode,
-      message,
-      storedProduct: selectedProduct, 
-    });
-
     if (!productCode) {
       alert(
         "Por favor, visita nuestro catálogo y selecciona un producto antes de solicitar el presupuesto."
@@ -73,7 +64,7 @@ const LandingPage = () => {
     )}`;
     window.open(whatsappURL, "_blank");
     // Limpiar el formulario
-    event.target.reset(); 
+    event.target.reset();
 
     // Limpiar selectedProduct del estado y localStorage si es necesario
     setSelectedProduct({ code: "", title: "" });
@@ -130,7 +121,12 @@ const LandingPage = () => {
               <a href="#gallery">Galería</a>
             </li>
             <li>
-              <a onClick={() => navigate("/catalogo")} style={{ cursor: "pointer" }}>Ver Catálogo</a>
+              <a
+                onClick={() => navigate("/catalogo")}
+                style={{ cursor: "pointer" }}
+              >
+                Ver Catálogo
+              </a>
             </li>
             <li>
               <a href="#budget">Presupuesto</a>
@@ -175,7 +171,7 @@ const LandingPage = () => {
               <span
                 onClick={() =>
                   document
-                    .querySelector(".budget-form")
+                    .querySelector(".contact")
                     .scrollIntoView({ behavior: "smooth" })
                 }
               >
