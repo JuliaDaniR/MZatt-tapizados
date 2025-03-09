@@ -1,7 +1,10 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CatalogPage = () => {
+  const navigate = useNavigate();
+  const [selectedProduct, setSelectedProduct] = useState({ code: "", image: "" });
   const products = [
     {
       image: "/base+respaldo1.jpg",
@@ -245,6 +248,11 @@ const CatalogPage = () => {
     },
   ];
 
+  const handleBudgetRequest = (code, image) => {
+    
+    setSelectedProduct({ code, image });
+    navigate("/#budget");
+  };
     const [selectedImage, setSelectedImage] = useState(null);
   
     const openImage = (image) => {
@@ -273,22 +281,28 @@ const CatalogPage = () => {
   
         {/* Grid de Productos */}
         <section className="products-grid">
-          {products.map((product, index) => (
-            <div className="product-card" key={index}>
-              <img 
-                src={product.image} 
-                alt={`Producto ${product.codigo}`} 
-                onClick={() => openImage(product.image)}
-                className="clickable-image"
-              />
-              <h3>{product.description}</h3>
-              <p>{product.description}</p>
-              <p className="product-code">
-                Código: {product.codigo} <span className="price">{product.price}</span>
-              </p>
-            </div>
-          ))}
-        </section>
+        {products.map((product, index) => (
+          <div className="product-card" key={index}>
+            <img 
+              src={product.image} 
+              alt={`Producto ${product.codigo}`} 
+              onClick={() => window.open(product.image, "_blank")}
+              className="clickable-image"
+            />
+            <h3>{product.description}</h3>
+            <p>{product.description}</p>
+            <p className="product-code">
+              Código: {product.codigo} <span className="price">{product.price}</span>
+            </p>
+            <button 
+              className="button" 
+              onClick={() => handleBudgetRequest(product.codigo, product.image)}
+            >
+              Presupuestar
+            </button>
+          </div>
+        ))}
+      </section>
   
         {/* Modal de Imagen */}
         {selectedImage && (

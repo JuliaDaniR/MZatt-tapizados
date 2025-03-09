@@ -10,27 +10,30 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState({ code: "", image: "" });
 
   const sendToWhatsApp = (event) => {
     event.preventDefault();
-    
+
     const name = event.target.name.value;
     const email = event.target.email.value;
     const productCode = event.target.productCode.value;
     const message = event.target.message.value;
     const phone = whatsappPhone;
-  
+
     const whatsappMessage = `
       *Solicitud de Presupuesto*  
       📌 *Nombre:* ${name}  
       📧 *Email:* ${email}  
       🔖 *Código del producto:* ${productCode}  
-      📝 *Mensaje:* ${message}
+      📝 *Mensaje:* ${message}  
+      
+      🖼 *Imagen del Producto:* ${selectedProduct.image}
     `;
-  
+
     const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappURL, "_blank");
-  };  
+  };
 
   const [isLightMode, setIsLightMode] = useState(
     localStorage.getItem("theme") === "light"
@@ -201,7 +204,14 @@ const LandingPage = () => {
           <h2>Solicita tu Presupuesto</h2>
           <input type="text" name="name" placeholder="Tu nombre" required />
           <input type="email" name="email" placeholder="Tu correo electrónico" required />
-          <input type="text" name="productCode" placeholder="Código del producto" required />
+          <input 
+            type="text" 
+            name="productCode" 
+            placeholder="Código del producto" 
+            value={selectedProduct.code} 
+            readOnly 
+            required 
+          />
           <textarea
             name="message"
             placeholder="Describe lo que necesitas"
