@@ -291,8 +291,9 @@ section {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  white-space: nowrap;
-  scrollbar-width: none;
+  scroll-snap-type: x mandatory; 
+  -webkit-overflow-scrolling: touch;
+  justify-content: flex-start;
 }
 
 .carousel::-webkit-scrollbar {
@@ -307,21 +308,34 @@ section {
   object-fit: cover;
   border-radius: 10px;
   margin: 0 10px;
+  scroll-snap-align: start;
 }
 
+/* Botones de navegación */
 .carousel-button {
-  background-color: var(--bg-transparent);
-  color: var(--text-color);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   font-size: 1.5rem;
-  margin: 0 10px;
   border-radius: 5px;
+  z-index: 10;
 }
 
 .carousel-button:hover {
-  background-color: var(--bg-transparent);
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
 }
 
 /* About */
@@ -637,13 +651,20 @@ button:hover {
     width: 70px;
     height: 70px;
   }
+  .carousel {
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+  }
+
+  .carousel-image {
+    flex: 0 0 100%; 
+    height: 250px; 
+    border-radius: 5px;
+    scroll-snap-align: center; 
+  }
 
   .carousel-button {
     display: none;
-  }
-
-  .carousel-container {
-    width: 100%;
   }
 
   .nav-links.open {
@@ -684,10 +705,6 @@ button:hover {
   .card {
     max-width: 100%;
     height: auto;
-  }
-
-  .carousel-image {
-    width: 100%;
   }
 
   .about {
