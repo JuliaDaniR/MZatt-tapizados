@@ -59,11 +59,13 @@ const GalleryWithCarousel = () => {
   const [scrollAmount, setScrollAmount] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [touchStartX, setTouchStartX] = useState(0);
-  const [touchEndX, setTouchEndX] = useState(0);
 
   // Detectar si el usuario está en móvil
   useEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Desplazamiento automático (solo en escritorio)
@@ -127,15 +129,9 @@ const GalleryWithCarousel = () => {
     setTouchStartX(e.touches[0].clientX);
   };
 
-  // Manejar movimiento del toque
-  const handleTouchMove = (e) => {
-    setTouchEndX(e.touches[0].clientX);
-  };
-
   // Manejar fin del toque
-  const handleTouchEnd = () => {
-    if (!touchStartX || !touchEndX) return;
-
+  const handleTouchEnd = (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
     const difference = touchStartX - touchEndX;
 
     if (difference > 50) {
@@ -146,7 +142,6 @@ const GalleryWithCarousel = () => {
 
     // Reiniciar valores táctiles
     setTouchStartX(0);
-    setTouchEndX(0);
   };
 
   return (
@@ -160,7 +155,6 @@ const GalleryWithCarousel = () => {
           className="carousel"
           ref={carouselRef}
           onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           {images.map((image, index) => (
