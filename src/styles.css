@@ -63,7 +63,7 @@
 /* Contenedor principal */
 .container {
   width: 100%;
-  overflow-x: hidden;
+  box-sizing: border-box;
   background-color: var(--container-bg);
 }
 
@@ -569,10 +569,6 @@ button:hover {
 
 /* Responsive para pantallas pequeñas */
 @media (max-width: 768px) {
-  body {
-    width: 100%;
-    overflow-x: hidden;
-  }
   .nav-links {
     display: none;
     flex-direction: column;
@@ -583,6 +579,14 @@ button:hover {
     width: 100%;
     text-align: center;
     padding: 1rem 0;
+  }
+
+  .carousel-button {
+    display: none;
+  }
+
+  .carousel-container{
+    width: 100%;
   }
 
   .nav-links.open {
@@ -624,7 +628,7 @@ button:hover {
   }
 
   .carousel-image {
-    width: 50%;
+    width: 100%;
   }
 
   .about {
