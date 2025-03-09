@@ -57,6 +57,8 @@ const GalleryWithCarousel = () => {
 
   const carouselRef = useRef(null);
   const [scrollAmount, setScrollAmount] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -76,14 +78,18 @@ const GalleryWithCarousel = () => {
           behavior: "smooth",
         });
       }
-    }, 50); // Adjust the scroll speed here
+    }, 50);
 
     return () => clearInterval(interval);
   }, [scrollAmount]);
 
+  // Función para ir hacia atrás
   const handlePrev = () => {
     if (carouselRef.current) {
-      const newScrollAmount = Math.max(scrollAmount - carouselRef.current.clientWidth / 2, 0);
+      const newScrollAmount = Math.max(
+        scrollAmount - carouselRef.current.clientWidth / 2,
+        0
+      );
       setScrollAmount(newScrollAmount);
       carouselRef.current.scrollTo({
         left: newScrollAmount,
@@ -92,15 +98,46 @@ const GalleryWithCarousel = () => {
     }
   };
 
+  // Función para ir hacia adelante
   const handleNext = () => {
     if (carouselRef.current) {
-      const newScrollAmount = Math.min(scrollAmount + carouselRef.current.clientWidth / 2, carouselRef.current.scrollWidth - carouselRef.current.clientWidth);
+      const newScrollAmount = Math.min(
+        scrollAmount + carouselRef.current.clientWidth / 2,
+        carouselRef.current.scrollWidth - carouselRef.current.clientWidth
+      );
       setScrollAmount(newScrollAmount);
       carouselRef.current.scrollTo({
         left: newScrollAmount,
         behavior: "smooth",
       });
     }
+  };
+
+  // Manejar inicio del toque
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  // Manejar movimiento del toque
+  const handleTouchMove = (e) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  // Manejar fin del toque
+  const handleTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+
+    const difference = touchStartX - touchEndX;
+    
+    if (difference > 50) {
+      handleNext(); // Deslizar hacia la izquierda → Siguiente imagen
+    } else if (difference < -50) {
+      handlePrev(); // Deslizar hacia la derecha → Imagen anterior
+    }
+
+    // Reiniciar valores
+    setTouchStartX(0);
+    setTouchEndX(0);
   };
 
   return (
@@ -110,8 +147,14 @@ const GalleryWithCarousel = () => {
         <button className="carousel-button prev" onClick={handlePrev}>
           ‹
         </button>
-        <div className="carousel" ref={carouselRef}>
-          {images.concat(images).map((image, index) => (
+        <div
+          className="carousel"
+          ref={carouselRef}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {images.map((image, index) => (
             <img
               key={index}
               src={image}
