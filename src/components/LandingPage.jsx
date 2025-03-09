@@ -54,7 +54,7 @@ const LandingPage = () => {
 
     if (!productCode) {
       alert(
-        "Por favor, selecciona un producto antes de solicitar el presupuesto."
+        "Por favor, visita nuestro catálogo y selecciona un producto antes de solicitar el presupuesto."
       );
       return;
     }
