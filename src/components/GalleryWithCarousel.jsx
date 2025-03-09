@@ -58,7 +58,7 @@ const GalleryWithCarousel = () => {
     const carouselRef = useRef(null);
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [touchStartX, setTouchStartX] = useState(null);
-    const [selectedImage, setSelectedImage] = useState(null); // Estado para el modal
+    const [selectedImage, setSelectedImage] = useState(null); 
     const [imageWidth, setImageWidth] = useState(0);
     const [currentIndex, setCurrentIndex] = useState(0);
   

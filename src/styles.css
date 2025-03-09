@@ -664,7 +664,9 @@ button:hover {
   }
 
   .carousel-button {
-    display: none;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 5px;
   }
 
   .nav-links.open {
