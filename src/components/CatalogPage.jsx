@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const CatalogPage = () => {
   const navigate = useNavigate();
-  const [selectedProduct, setSelectedProduct] = useState({ code: "", image: "" });
+  const [selectedProduct, setSelectedProduct] = useState({ code: "", title: "" });
   const [selectedImage, setSelectedImage] = useState(null);
 
   const products = [
@@ -290,10 +290,10 @@ const CatalogPage = () => {
     },
   ];
 
-  const handleBudgetRequest = (code, image) => {
-    setSelectedProduct({ code, image });
-    localStorage.setItem("selectedProduct", JSON.stringify({ code, image }));
-    console.log("Producto seleccionado:", { code, image });
+  const handleBudgetRequest = (code, title) => {
+    setSelectedProduct({ code, title });
+    localStorage.setItem("selectedProduct", JSON.stringify({ code, title }));
+    console.log("Producto seleccionado:", { code, title });
     navigate("/#budget");
   };
 
