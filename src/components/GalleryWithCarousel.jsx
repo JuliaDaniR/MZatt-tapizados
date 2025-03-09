@@ -58,6 +58,7 @@ const GalleryWithCarousel = () => {
   const carouselRef = useRef(null);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [touchStartX, setTouchStartX] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null); // Estado para el modal
 
   // Verifica si es móvil
   useEffect(() => {
@@ -106,13 +107,28 @@ const GalleryWithCarousel = () => {
           onTouchEnd={handleTouchEnd}
         >
           {images.map((image, index) => (
-            <img key={index} src={image} alt={`Imagen ${index + 1}`} className="carousel-image" />
+            <img
+              key={index}
+              src={image}
+              alt={`Imagen ${index + 1}`}
+              className="carousel-image clickable-image"
+              onClick={() => setSelectedImage(image)} // Abre el modal
+            />
           ))}
         </div>
         <button className="carousel-button next" onClick={() => scrollCarousel(1)}>
           ›
         </button>
       </div>
+
+      {/* Modal de Imagen */}
+      {selectedImage && (
+        <div className="modal" onClick={() => setSelectedImage(null)}>
+          <div className="modal-content">
+            <img src={selectedImage} alt="Imagen ampliada" />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

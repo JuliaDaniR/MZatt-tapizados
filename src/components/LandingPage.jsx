@@ -76,6 +76,9 @@ const LandingPage = () => {
               <a href="#gallery">Galería</a>
             </li>
             <li>
+              <a onClick={() => navigate("/catalogo")}>Ver Catálogo</a>
+            </li>
+            <li>
               <a href="#budget">Presupuesto</a>
             </li>
             <li>

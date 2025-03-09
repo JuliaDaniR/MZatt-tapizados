@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 const CatalogPage = () => {
   const products = [
@@ -244,41 +245,69 @@ const CatalogPage = () => {
     },
   ];
 
-  return (
-    <div className="catalog-container">
-      {/* Navbar */}
-      <nav className="navbar">
-        <img src="/logo.png" alt="MZatt" className="logo" onClick={() => window.location.href = "/"} />
-        <h1 className="hero-title">
-          Diseño y Confort para su hogar
-        </h1>
-      </nav>
-      <header className="catalog-header">
-        <h1>Catálogo de Productos</h1>
-        <p>
-          Descubre todos nuestros productos con diseños exclusivos y calidad
-          garantizada.
-        </p>
-      </header>
-
-      <section className="products-grid">
-        {products.map((product, index) => (
-          <div className="product-card" key={index}>
-            <img src={product.image} alt={`Producto ${product.codigo}`} />
-            <h3>{product.description}</h3>
-            <p>{product.description}</p>
-            <p className="product-code">Código: {product.codigo} <span className="price">{product.price}</span></p>
+    const [selectedImage, setSelectedImage] = useState(null);
+  
+    const openImage = (image) => {
+      setSelectedImage(image);
+    };
+  
+    const closeModal = () => {
+      setSelectedImage(null);
+    };
+  
+    return (
+      <div className="catalog-container">
+        {/* Navbar */}
+        <nav className="navbar">
+          <img src="/logo.png" alt="MZatt" className="logo" onClick={() => window.location.href = "/"} />
+          <h1 className="hero-title">
+            Diseño y Confort para su hogar
+          </h1>
+        </nav>
+  
+        {/* Header */}
+        <header className="catalog-header">
+          <h1>Catálogo de Productos</h1>
+          <p>Descubre todos nuestros productos con diseños exclusivos y calidad garantizada.</p>
+        </header>
+  
+        {/* Grid de Productos */}
+        <section className="products-grid">
+          {products.map((product, index) => (
+            <div className="product-card" key={index}>
+              <img 
+                src={product.image} 
+                alt={`Producto ${product.codigo}`} 
+                onClick={() => openImage(product.image)}
+                className="clickable-image"
+              />
+              <h3>{product.description}</h3>
+              <p>{product.description}</p>
+              <p className="product-code">
+                Código: {product.codigo} <span className="price">{product.price}</span>
+              </p>
+            </div>
+          ))}
+        </section>
+  
+        {/* Modal de Imagen */}
+        {selectedImage && (
+          <div className="modal" onClick={closeModal}>
+            <div className="modal-content">
+              <img src={selectedImage} alt="Imagen ampliada" />
+            </div>
           </div>
-        ))}
-      </section>
-
-      <footer className="catalog-footer">
-        <button onClick={() => window.history.back()} className="button">
-          Volver
-        </button>
-      </footer>
-    </div>
-  );
-};
-
-export default CatalogPage;
+        )}
+  
+        {/* Footer */}
+        <footer className="catalog-footer">
+          <button onClick={() => window.history.back()} className="button">
+            Volver
+          </button>
+        </footer>
+      </div>
+    );
+  };
+  
+  export default CatalogPage;
+  
