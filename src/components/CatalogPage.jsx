@@ -294,9 +294,17 @@ const CatalogPage = () => {
     setSelectedProduct({ code, title });
     localStorage.setItem("selectedProduct", JSON.stringify({ code, title }));
     console.log("Producto seleccionado:", { code, title });
-    navigate("/#budget");
-  };
+  
+    navigate("/");
 
+    setTimeout(() => {
+      const budgetSection = document.getElementById("budget");
+      if (budgetSection) {
+        budgetSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100); 
+  };
+  
   const openImage = (image) => {
     setSelectedImage(image);
   };
