@@ -532,7 +532,6 @@ button {
 }
 
 button:hover {
-  background-color: var(--primary-color);
   scale: 1.1;
 }
 
@@ -591,6 +590,8 @@ button:hover {
 
   .nav-links.open {
     display: flex;
+    margin-top: 4rem;
+    background: var(--hero-bg);
   }
 
   .menu-toggle {

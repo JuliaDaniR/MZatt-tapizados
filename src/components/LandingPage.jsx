@@ -46,25 +46,30 @@ const LandingPage = () => {
           className="logo"
           onClick={() => (window.location.href = "/")}
         />
-        <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-          <FaBars />
-        </button>
-        <ul className={menuOpen ? "nav-links open" : "nav-links"}>
-          <li>
-            <a href="#about">Sobre Nosotros</a>
-          </li>
-          <li>
-            <a href="#services">Productos</a>
-          </li>
-          <li>
-            <a href="#gallery">Galería</a>
-          </li>
-          <li>
-            <a href="#budget">Presupuesto</a>
-          </li>
-          <li>
-            <a href="#contact">Contacto</a>
-          </li>
+        <div style={{ display: "flex", alignItems: "flex-end", flexDirection: "column-reverse", }}>
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            <FaBars />
+          </button>
+          <ul className={menuOpen ? "nav-links open" : "nav-links"}>
+            <li>
+              <a href="#about">Sobre Nosotros</a>
+            </li>
+            <li>
+              <a href="#services">Productos</a>
+            </li>
+            <li>
+              <a href="#gallery">Galería</a>
+            </li>
+            <li>
+              <a href="#budget">Presupuesto</a>
+            </li>
+            <li>
+              <a href="#contact">Contacto</a>
+            </li>
+          </ul>
           <button
             id="theme-toggle"
             onClick={() => setIsLightMode(!isLightMode)}
@@ -74,7 +79,7 @@ const LandingPage = () => {
           >
             {isLightMode ? <Moon size={24} /> : <Sun size={24} />}
           </button>
-        </ul>
+        </div>
       </nav>
 
       {/* Hero Section */}
@@ -165,7 +170,7 @@ const LandingPage = () => {
           <button
             className="button hero-button"
             style={{ marginTop: "2rem" }}
-            onClick={() => navigate("/catalogo")} 
+            onClick={() => navigate("/catalogo")}
           >
             Ver Catálogo
           </button>
