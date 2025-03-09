@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 const CatalogPage = () => {
   const navigate = useNavigate();
   const [selectedProduct, setSelectedProduct] = useState({ code: "", image: "" });
+  const [selectedImage, setSelectedImage] = useState(null);
+
   const products = [
     {
       image: "/base+respaldo1.jpg",
@@ -249,48 +251,43 @@ const CatalogPage = () => {
   ];
 
   const handleBudgetRequest = (code, image) => {
-    
     setSelectedProduct({ code, image });
+    localStorage.setItem("selectedProduct", JSON.stringify({ code, image }));
+    console.log("Producto seleccionado:", { code, image });
     navigate("/#budget");
   };
-    const [selectedImage, setSelectedImage] = useState(null);
   
-    const openImage = (image) => {
-      setSelectedImage(image);
-    };
-  
-    const closeModal = () => {
-      setSelectedImage(null);
-    };
-  
-    return (
-      <div className="catalog-container">
-        {/* Navbar */}
-        <nav className="navbar">
-          <img src="/logo.png" alt="MZatt" className="logo" onClick={() => window.location.href = "/"} />
-          <h1 className="hero-title">
-            Diseño y Confort para su hogar
-          </h1>
-        </nav>
-  
-        {/* Header */}
-        <header className="catalog-header">
-          <h1>Catálogo de Productos</h1>
-          <p>Descubre todos nuestros productos con diseños exclusivos y calidad garantizada.</p>
-        </header>
-  
-        {/* Grid de Productos */}
-        <section className="products-grid">
+
+  const openImage = (image) => {
+    setSelectedImage(image);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  return (
+    <div className="catalog-container">
+      <nav className="navbar">
+        <img src="/logo.png" alt="MZatt" className="logo" onClick={() => window.location.href = "/"} />
+        <h1 className="hero-title">Diseño y Confort para su hogar</h1>
+      </nav>
+
+      <header className="catalog-header">
+        <h1>Catálogo de Productos</h1>
+        <p>Descubre todos nuestros productos con diseños exclusivos y calidad garantizada.</p>
+      </header>
+
+      <section className="products-grid">
         {products.map((product, index) => (
           <div className="product-card" key={index}>
             <img 
               src={product.image} 
               alt={`Producto ${product.codigo}`} 
-              onClick={() => window.open(product.image, "_blank")}
+              onClick={() => openImage(product.image)}
               className="clickable-image"
             />
             <h3>{product.description}</h3>
-            <p>{product.description}</p>
             <p className="product-code">
               Código: {product.codigo} <span className="price">{product.price}</span>
             </p>
@@ -303,25 +300,20 @@ const CatalogPage = () => {
           </div>
         ))}
       </section>
-  
-        {/* Modal de Imagen */}
-        {selectedImage && (
-          <div className="modal" onClick={closeModal}>
-            <div className="modal-content">
-              <img src={selectedImage} alt="Imagen ampliada" />
-            </div>
+
+      {selectedImage && (
+        <div className="modal" onClick={closeModal}>
+          <div className="modal-content">
+            <img src={selectedImage} alt="Imagen ampliada" />
           </div>
-        )}
-  
-        {/* Footer */}
-        <footer className="catalog-footer">
-          <button onClick={() => window.history.back()} className="button">
-            Volver
-          </button>
-        </footer>
-      </div>
-    );
-  };
-  
-  export default CatalogPage;
-  
+        </div>
+      )}
+
+      <footer className="catalog-footer">
+        <button onClick={() => window.history.back()} className="button">Volver</button>
+      </footer>
+    </div>
+  );
+};
+
+export default CatalogPage;

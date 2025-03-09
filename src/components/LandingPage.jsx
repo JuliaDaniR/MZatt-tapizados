@@ -10,16 +10,54 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState({ code: "", image: "" });
+  const [selectedProduct, setSelectedProduct] = useState({
+    code: "",
+    image: "",
+  });
+
+  useEffect(() => {
+    const storedProduct =
+      JSON.parse(localStorage.getItem("selectedProduct")) || {};
+    console.log("Producto recuperado al cargar:", storedProduct); 
+    if (storedProduct.code) {
+      setSelectedProduct(storedProduct);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Limpiar el localStorage si se recarga la página
+    localStorage.removeItem("selectedProduct");
+
+    // Verificar si hay algún producto almacenado
+    const storedProduct =
+      JSON.parse(localStorage.getItem("selectedProduct")) || {};
+    if (storedProduct.code) {
+      setSelectedProduct(storedProduct);
+    }
+  }, []);
 
   const sendToWhatsApp = (event) => {
     event.preventDefault();
 
-    const name = event.target.name.value;
-    const email = event.target.email.value;
-    const productCode = event.target.productCode.value;
-    const message = event.target.message.value;
-    const phone = whatsappPhone;
+    const name = event.target.name.value.trim();
+    const email = event.target.email.value.trim();
+    const message = event.target.message.value.trim();
+    const productCode = selectedProduct.code;
+
+    console.log("Datos del formulario:", {
+      name,
+      email,
+      productCode,
+      message,
+      storedProduct: selectedProduct, 
+    });
+
+    if (!productCode) {
+      alert(
+        "Por favor, selecciona un producto antes de solicitar el presupuesto."
+      );
+      return;
+    }
 
     const whatsappMessage = `
       *Solicitud de Presupuesto*  
@@ -27,12 +65,23 @@ const LandingPage = () => {
       📧 *Email:* ${email}  
       🔖 *Código del producto:* ${productCode}  
       📝 *Mensaje:* ${message}  
-      
-      🖼 *Imagen del Producto:* ${selectedProduct.image}
+      ${
+        selectedProduct.image
+          ? `🖼 *Imagen del Producto:* ${selectedProduct.image}`
+          : ""
+      }
     `;
 
-    const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
+    const whatsappURL = `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(
+      whatsappMessage
+    )}`;
     window.open(whatsappURL, "_blank");
+    // Limpiar el formulario
+    event.target.reset(); 
+
+    // Limpiar selectedProduct del estado y localStorage si es necesario
+    setSelectedProduct({ code: "", image: "" });
+    localStorage.removeItem("selectedProduct");
   };
 
   const [isLightMode, setIsLightMode] = useState(
@@ -61,7 +110,13 @@ const LandingPage = () => {
           className="logo"
           onClick={() => (window.location.href = "/")}
         />
-        <div style={{ display: "flex", alignItems: "flex-end", flexDirection: "column-reverse", }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-end",
+            flexDirection: "column-reverse",
+          }}
+        >
           <button
             className="menu-toggle"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -79,7 +134,7 @@ const LandingPage = () => {
               <a href="#gallery">Galería</a>
             </li>
             <li>
-              <a onClick={() => navigate("/catalogo")}>Ver Catálogo</a>
+              <a onClick={() => navigate("/catalogo")} style={{ cursor: "pointer" }}>Ver Catálogo</a>
             </li>
             <li>
               <a href="#budget">Presupuesto</a>
@@ -198,19 +253,23 @@ const LandingPage = () => {
       {/* Galería de Imágenes */}
       <GalleryWithCarousel />
 
-   
+      {/* Formulario de Presupuesto */}
       <section className="budget-form" id="budget">
         <form onSubmit={sendToWhatsApp}>
           <h2>Solicita tu Presupuesto</h2>
           <input type="text" name="name" placeholder="Tu nombre" required />
-          <input type="email" name="email" placeholder="Tu correo electrónico" required />
-          <input 
-            type="text" 
-            name="productCode" 
-            placeholder="Código del producto" 
-            value={selectedProduct.code} 
-            readOnly 
-            required 
+          <input
+            type="email"
+            name="email"
+            placeholder="Tu correo electrónico"
+            required
+          />
+          <input
+            type="text"
+            name="productCode"
+            placeholder="Código del producto"
+            value={selectedProduct.code || ""}
+            readOnly
           />
           <textarea
             name="message"
