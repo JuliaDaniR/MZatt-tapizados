@@ -17,7 +17,7 @@
   --card-bg: rgba(255, 255, 255, 0.2);
   --about-bg: #120f24;
   --header-bg: #342b67;
-  --hero-bg: url('https://fondosmil.co/fondo/35176.jpg');
+  --hero-bg: url("https://fondosmil.co/fondo/35176.jpg");
   --services-bg: url("https://th.bing.com/th/id/OIP.U_piljjjzirLjdOWrGfvzAHaEo?rs=1&pid=ImgDetMain");
   --budget-form-bg: url("https://static.vecteezy.com/system/resources/previews/026/716/985/non_2x/abstract-tech-lines-background-futuristic-abstract-shapes-technology-application-cover-and-web-site-design-generative-ai-illustration-free-photo.jpg");
   --product-card-bg: url("https://th.bing.com/th/id/OIP.BMJVz5PMqbhxLnOTVm-H3QHaLj?w=600&h=936&rs=1&pid=ImgDetMain");
@@ -33,7 +33,7 @@
   --card-bg: rgba(0, 0, 0, 0.1);
   --about-bg: #7e898b;
   --header-bg: #64e1bc;
-  --hero-bg: url('https://img.freepik.com/premium-photo/modern-abstract-light-gray-background-with-squares_476363-5781.jpg');
+  --hero-bg: url("https://img.freepik.com/premium-photo/modern-abstract-light-gray-background-with-squares_476363-5781.jpg");
   --services-bg: url("https://thumbs.dreamstime.com/b/abstract-background-waves-white-sea-green-abstract-background-wallpaper-oder-business-card-abstract-background-waves-white-202755588.jpg");
   --budget-form-bg: url("https://image.freepik.com/vetores-gratis/fundo-abstrato-geometrico-verde_23-2148374178.jpg");
   --product-card-bg: url("https://thumbs.dreamstime.com/b/fondo-que-agita-gris-abstracto-con-el-elemento-verde-25243871.jpg");
@@ -58,7 +58,6 @@
 .theme-toggle:hover {
   transform: scale(1.1);
 }
-
 
 /* Contenedor principal */
 .container {
@@ -143,11 +142,12 @@
 }
 
 .hero-title {
-  font-size: 3rem;
-  font-family: "Arial", sans-serif;
+  font-size: 1.8rem;
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
   margin-bottom: 10px;
   animation: fadeIn 1s ease-out;
+  text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px; 
 }
 
 .hero-description {
@@ -296,12 +296,12 @@ section {
 }
 
 .carousel::-webkit-scrollbar {
-  display: none; /* Ocultar scrollbar */
+  display: none;
 }
 
 .carousel-image {
   flex: 0 0 auto;
-  width: 33%; /* Ajusta la cantidad de imágenes visibles según el tamaño */
+  width: 33%;
   max-width: 100%;
   height: 400px;
   object-fit: cover;
@@ -387,6 +387,12 @@ section {
   border-radius: 5px;
   color: var(--text-color);
   background: var(--about-bg);
+}
+
+.budget-form input::placeholder,
+.budget-form textarea::placeholder {
+  color: var(--text-color);
+  font-weight: bold;
 }
 
 .budget-form button {
@@ -502,11 +508,11 @@ section {
 
 .product-card h3 {
   font-size: 1.2rem;
-  margin-top: 1rem;
+  margin: 1rem 0;
   color: var(--text-color);
   background-color: var(--bg-transparent);
   height: 90px;
-  padding: 0 1rem;
+  padding: 2rem 0;
 }
 
 .product-card p {
@@ -515,12 +521,22 @@ section {
   height: 60px;
 }
 
+.product-card .product-code {
+  font-size: 1rem;
+  color: var(--text-color);
+  font-weight: bold;
+  margin-top: 0.5rem;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .product-card .price {
   font-size: 1.8rem;
   color: var(--primary-color);
   font-weight: bold;
   margin-top: 0.5rem;
-  height: 60px;
 }
 
 .catalog-footer {
@@ -544,7 +560,7 @@ button:hover {
 
 @media (max-width: 1024px) {
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 
   .hero-description {
@@ -589,13 +605,15 @@ button:hover {
 
   .logo {
     margin-left: 0;
+    width: 70px;
+    height: 70px;
   }
 
   .carousel-button {
     display: none;
   }
 
-  .carousel-container{
+  .carousel-container {
     width: 100%;
   }
 
@@ -614,7 +632,7 @@ button:hover {
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
 
   .hero-description {
@@ -656,8 +674,7 @@ button:hover {
   }
 
   .product-card {
-    padding: 0.5rem;
-    min-height: 600px;
+    min-height: 650px;
   }
 
   .product-card h3 {

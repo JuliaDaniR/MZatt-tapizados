@@ -13,12 +13,24 @@ const LandingPage = () => {
 
   const sendToWhatsApp = (event) => {
     event.preventDefault();
+    
     const name = event.target.name.value;
+    const email = event.target.email.value;
+    const productCode = event.target.productCode.value;
     const message = event.target.message.value;
     const phone = whatsappPhone;
-    const whatsappURL = `https://wa.me/${phone}?text=Hola, mi nombre es ${name}. ${message}`;
+  
+    const whatsappMessage = `
+      *Solicitud de Presupuesto*  
+      📌 *Nombre:* ${name}  
+      📧 *Email:* ${email}  
+      🔖 *Código del producto:* ${productCode}  
+      📝 *Mensaje:* ${message}
+    `;
+  
+    const whatsappURL = `https://wa.me/${phone}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappURL, "_blank");
-  };
+  };  
 
   const [isLightMode, setIsLightMode] = useState(
     localStorage.getItem("theme") === "light"
@@ -180,11 +192,13 @@ const LandingPage = () => {
       {/* Galería de Imágenes */}
       <GalleryWithCarousel />
 
-      {/* Formulario de Presupuesto */}
+   
       <section className="budget-form" id="budget">
         <form onSubmit={sendToWhatsApp}>
           <h2>Solicita tu Presupuesto</h2>
           <input type="text" name="name" placeholder="Tu nombre" required />
+          <input type="email" name="email" placeholder="Tu correo electrónico" required />
+          <input type="text" name="productCode" placeholder="Código del producto" required />
           <textarea
             name="message"
             placeholder="Describe lo que necesitas"
