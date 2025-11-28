@@ -7,6 +7,7 @@ const MainNavbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [isLight, setIsLight] = useState(false);
 
   /* Leer carrito */
   useEffect(() => {
@@ -18,6 +19,7 @@ const MainNavbar = () => {
   /* Tema */
   const toggleTheme = () => {
     document.documentElement.classList.toggle("light-mode");
+    setIsLight(!isLight);
   };
 
   return (
@@ -34,9 +36,7 @@ const MainNavbar = () => {
         <div className="right-actions">
           {/* Tema */}
           <button className="theme-toggle" onClick={toggleTheme}>
-            {document.body.classList.contains("light-mode")
-              ? <Moon size={22} />
-              : <Sun size={22} />}
+            {isLight ? <Moon size={22} /> : <Sun size={22} />}
           </button>
 
           {/* Carrito */}
