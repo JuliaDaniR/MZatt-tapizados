@@ -1,0 +1,147 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+/* ===============================
+   🎨 PALETA DARK MODE (DEFAULT)
+================================= */
+:root {
+  --bg-nav-color: rgba(10, 14, 22, 0.85); /* Azul profundo translúcido */
+  --bg-transparent: rgba(0, 0, 0, 0.4);
+  --text-color: #f2f2f2;
+
+  --primary-color: #ff7a1a; /* Naranja cálido */
+  --primary-color-hover: #e86807;
+  --golden-text: #e09f2375;
+  --border-golden: #4c370f6b;
+
+  --container-bg: #0c1118; /* Fondo general */
+  --card-bg: rgba(255, 255, 255, 0.08); /* Tarjetas vidriadas */
+
+  --about-bg: #0f141c;
+  --header-bg: #0d1824;
+
+  --services-bg: #0f1c2d; /* Antes imagen — ahora color sólido elegante */
+  --budget-form-bg: #162433;
+
+  --product-card-bg: rgba(255, 255, 255, 0.05);
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+}
+
+/* ===============================
+   🎨 PALETA LIGHT MODE
+================================= */
+.light-mode {
+  --bg-nav-color: rgba(255, 255, 255, 0.85);
+  --bg-transparent: rgba(255, 255, 255, 0.6);
+  --text-color: #1a1a1a;
+
+  --primary-color: #009688; /* Verde agua / moderno */
+  --primary-color-hover: #35c0b1;
+  --golden-text: #5d470eec;
+  --border-golden: #0c434b6c;
+
+  --container-bg: #f2f7f8; /* Gris azulado muy claro */
+  --card-bg: rgba(0, 0, 0, 0.05);
+
+  --about-bg: #e9f2f3;
+  --header-bg: #d8f0ee;
+
+  --services-bg: #eef7f8;
+  --budget-form-bg: #d6efec;
+
+  --product-card-bg: rgba(0, 0, 0, 0.04);
+
+  --border-color: rgba(0, 0, 0, 0.12);
+  --shadow-color: rgba(0, 0, 0, 0.12);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.theme-toggle:focus {
+  outline: none;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Aplica fondo segun variables del modo */
+html, body {
+  height: 100%;
+  background: var(--about-bg) !important;
+  color: var(--text-color);
+}
+
+
+/* Contenedor principal */
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--container-bg);
+}
+
+/* =============================
+   CONTENEDOR PRINCIPAL
+============================= */
+
+.pedido-container {
+  max-width: 900px;
+  margin: 7rem auto 3rem;
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+
+/* =============================
+   RESPONSIVE
+============================= */
+
+@media (max-width: 600px) {
+  .pedido-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pedido-img {
+    width: 100%;
+    height: 180px;
+  }
+
+  .pedido-actions {
+    flex-direction: column;
+  }
+
+  .back-btn {
+    font-size: .9rem;
+  }
+}
+
+/* Estado inicial: oculto y desplazado */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* Al aparecer en pantalla */
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
