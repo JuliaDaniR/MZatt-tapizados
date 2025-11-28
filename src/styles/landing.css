@@ -386,10 +386,10 @@ section {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
+  align-items: center;
 }
 
+/* CONTENEDOR PRINCIPAL */
 .contact-form-container {
   display: flex;
   flex-wrap: wrap;
@@ -401,9 +401,10 @@ section {
   box-shadow: 0 10px 35px var(--shadow-color);
   max-width: 1000px;
   width: 100%;
+  border: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Text info */
+/* TEXT INFO */
 .contact-info {
   flex: 1;
   min-width: 300px;
@@ -413,6 +414,7 @@ section {
 .contact-info h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 .contact-info p {
@@ -420,14 +422,18 @@ section {
   line-height: 1.5;
   margin-bottom: 1.2rem;
   font-size: 1.05rem;
+  text-align: center;
 }
 
 .contact-details p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   opacity: 0.85;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
-/* Form */
+/* FORM */
 .contact-form {
   flex: 1;
   min-width: 300px;
@@ -436,13 +442,16 @@ section {
   gap: 1rem;
 }
 
+/* INPUTS / TEXTAREA */
 .contact-form input,
 .contact-form textarea {
+  width: 100%;
   background: var(--about-bg);
-  padding: 0.9rem 1rem;
+  padding: 1rem;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   color: var(--text-color);
+  font-size: 1rem;
 }
 
 .contact-form textarea {
@@ -454,6 +463,63 @@ section {
 .contact-form textarea::placeholder {
   color: var(--text-color);
   opacity: 0.7;
+}
+
+/* BOTÓN */
+.contact-form button {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary-color);
+  color: var(--text-color);
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   📱 RESPONSIVE PARA MÓVIL
+================================*/
+@media (max-width: 768px) {
+
+  .contact-form-container {
+    padding: 2rem;
+    border-radius: 12px;
+    justify-content: center;
+  }
+
+  .contact-info h2 {
+    font-size: 1.7rem;
+  }
+
+  .contact-info p {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .contact-form-section {
+    padding: 2rem 1rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+
+  .contact-details p {
+    font-size: 0.95rem;
+    justify-content: center;
+  }
+
+  .contact-form button {
+    margin-top: 0.5rem;
+  }
 }
 
 /* ===========================

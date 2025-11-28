@@ -159,7 +159,7 @@
 
   .nav-links.open {
     padding: 1rem 0;
-    max-height: 300px;
+    max-height: 400px;
     opacity: 1;
     background: var(--container-bg);
   }
