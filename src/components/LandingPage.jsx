@@ -134,7 +134,7 @@ const LandingPage = () => {
             {/* CARD 2 */}
             <div className="product-card-info reveal">
               <img
-                src="/producto2.png"
+                src="../../public/producto2.png"
                 alt="Diseños Personalizados"
                 className="service-img"
               />
