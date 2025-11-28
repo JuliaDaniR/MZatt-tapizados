@@ -119,7 +119,7 @@ const LandingPage = () => {
             {/* CARD 1 */}
             <div className="product-card-info reveal">
               <img
-                src="./public/producto1.png"
+                src="../../public/producto1.png"
                 alt="Respaldos Tapizados"
                 className="service-img"
               />
@@ -162,7 +162,7 @@ const LandingPage = () => {
           {/* Imagen lateral */}
           <div className="about-image">
             <img
-              src="public/sobre-nosotros.png"
+              src="../../public/sobre-nosotros.png"
               alt="Taller y diseño de tapizados"
             />
           </div>
@@ -251,7 +251,7 @@ const LandingPage = () => {
           {/* CHENILLE */}
           <div className="fabric-card reveal">
             <img
-              src="public/chenille-rustico.png"
+              src="../../public/chenille-rustico.png"
               alt="Chenille"
               className="fabric-img"
             />
@@ -265,7 +265,7 @@ const LandingPage = () => {
 
           {/* PANA */}
           <div className="fabric-card reveal">
-            <img src="public/pana.png" alt="Pana" className="fabric-img" />
+            <img src="../../public/pana.png" alt="Pana" className="fabric-img" />
             <h3>Pana</h3>
             <p>
               Elegancia clásica y tacto ultrasuave. Perfecta para quienes buscan
@@ -277,7 +277,7 @@ const LandingPage = () => {
           {/* CUERINA */}
           <div className="fabric-card reveal">
             <img
-              src="public/cuerina.png"
+              src="../../public/cuerina.png"
               alt="Cuerina"
               className="fabric-img"
             />
