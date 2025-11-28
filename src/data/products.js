@@ -378,7 +378,7 @@ export const products = [
       "Respaldo capitoneado de estilo clásico con diseño curvo tipo 'Imperial' y detalles en tachas metálicas. Tapizado en pana de alta calidad con capitoné profundo y terminación artesanal. Incluye baúl a juego con gran capacidad de guardado y tapizado capitoneado. Ideal para dormitorios que buscan un toque de elegancia y presencia con funcionalidad adicional.",
 
     mainImage: "/producto21.png",
-    images: ["/producto21-A.JPG", "/producto21-B.jpeg"],
+    images: ["/producto21-A.jpg", "/producto21-B.jpeg"],
 
     tipo: "por_tamano",
     precios: {
@@ -546,7 +546,7 @@ export const products = [
       "Sillón esquinero capitoneado estilo 'puffy', de líneas rectas y diseño moderno. Ideal para livings, salas de espera o espacios amplios. Su tapizado acolchonado tipo capitoné le da una presencia elegante y confortable. Disponible en pana o cuerina en variedad de colores.",
 
     mainImage: "/producto30.png",
-    images: ["/producto30-A.JPG"],
+    images: ["/producto30-A.jpg"],
 
     precios: {
       "unico" : 180000,
@@ -599,7 +599,7 @@ export const products = [
       "Sillón capitoneado estilo barbero, diseñado para locales comerciales, barberías y espacios de espera. Tapizado en cuerina de alta resistencia, con detalles de capitoné profundo y tachas metálicas decorativas. Estructura firme, asiento cómodo y diseño elegante que combina estética clásica con durabilidad.",
 
     mainImage: "/producto33.png",
-    images: ["/producto33-A.JPG"],
+    images: ["/producto33-A.jpg"],
 
     precios: {
       "1_metro": 95000,
@@ -658,7 +658,7 @@ export const products = [
       "Respaldo tapizado con diseño panelado vertical estilo ‘Soft Panels’. Moderno, minimalista y adaptable a cualquier dormitorio. Fabricado con estructura reforzada, espuma de alta densidad y tapizado premium en pana o cuerina. Su diseño limpio aporta elegancia sin perder confort.",
 
     mainImage: "/producto36.png",
-    images: ["/producto36-A.JPG"],
+    images: ["/producto36-A.jpg"],
 
     precios: {
       "1_plaza": 45000,
@@ -733,7 +733,7 @@ export const products = [
       "Respaldo capitoneado en tono rosa viejo, elegante y delicado. Fabricado en madera reforzada y totalmente acolchonado para mayor confort. Tapizado en pana soft de alta calidad. Ideal para dormitorios modernos y románticos.",
 
     mainImage: "/producto40.png",
-    images: ["/producto40-A.JPG"],
+    images: ["/producto40-A.jpg"],
 
     precios: {
       "1_plaza": 65000,
