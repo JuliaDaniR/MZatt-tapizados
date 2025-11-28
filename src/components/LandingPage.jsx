@@ -119,7 +119,7 @@ const LandingPage = () => {
             {/* CARD 1 */}
             <div className="product-card-info reveal">
               <img
-                src="public/producto1.png"
+                src="./public/producto1.png"
                 alt="Respaldos Tapizados"
                 className="service-img"
               />
@@ -134,7 +134,7 @@ const LandingPage = () => {
             {/* CARD 2 */}
             <div className="product-card-info reveal">
               <img
-                src="public/producto2.png"
+                src="./public/producto2.png"
                 alt="Diseños Personalizados"
                 className="service-img"
               />
