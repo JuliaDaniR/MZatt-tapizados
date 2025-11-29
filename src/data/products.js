@@ -12,7 +12,7 @@ export const products = [
       "1_plaza": 155000,
       "2_plazas": 185000,
       "2_plazas_y_media": 195000,
-      "king_size": 235000,
+      king_size: 235000,
     },
   },
 
@@ -29,7 +29,7 @@ export const products = [
       "1_plaza": 215000,
       "2_plazas": 255000,
       "2_plazas_y_media": 275000,
-      "king_size": 325000,
+      king_size: 325000,
     },
   },
 
@@ -46,7 +46,7 @@ export const products = [
       "1_plaza": 155000,
       "2_plazas": 185000,
       "2_plazas_y_media": 195000,
-      "king_size": 235000,
+      king_size: 235000,
     },
   },
 
@@ -83,7 +83,7 @@ export const products = [
       "1_plaza": 120000,
       "2_plazas": 150000,
       "2_plazas_y_media": 180000,
-      "king_size": 220000,
+      king_size: 220000,
     },
   },
   {
@@ -102,7 +102,7 @@ export const products = [
       "1_plaza": 245000,
       "2_plazas": 285000,
       "2_plazas_y_media": 305000,
-      "king_size": 355000,
+      king_size: 355000,
     },
   },
   {
@@ -121,7 +121,7 @@ export const products = [
       "1_plaza": 78000,
       "2_plazas": 89000,
       "2_plazas_y_media": 98000,
-      "king_size": 123000,
+      king_size: 123000,
     },
   },
   {
@@ -140,7 +140,7 @@ export const products = [
       "1_plaza": 62000,
       "2_plazas": 69000,
       "2_plazas_y_media": 79000,
-      "king_size": 91000,
+      king_size: 91000,
     },
   },
   {
@@ -159,7 +159,7 @@ export const products = [
       "1_plaza": 108000,
       "2_plazas": 119000,
       "2_plazas_y_media": 128000,
-      "king_size": 153000,
+      king_size: 153000,
     },
   },
   {
@@ -178,7 +178,7 @@ export const products = [
       "1_plaza": 235000,
       "2_plazas": 279000,
       "2_plazas_y_media": 296000,
-      "king_size": 365000,
+      king_size: 365000,
     },
   },
   {
@@ -197,7 +197,7 @@ export const products = [
       "1_plaza": 295000,
       "2_plazas": 380000,
       "2_plazas_y_media": 420000,
-      "king_size": 560000,
+      king_size: 560000,
     },
   },
   {
@@ -216,7 +216,7 @@ export const products = [
       "1_plaza": 245000,
       "2_plazas": 285000,
       "2_plazas_y_media": 305000,
-      "king_size": 355000,
+      king_size: 355000,
     },
   },
   {
@@ -234,8 +234,8 @@ export const products = [
     precios: {
       "1_plaza": 175000,
       "2_plazas": 205000,
-      "2_plazas_y_media": 215000,
-      "king_size": 255000,
+      "2_plazas_y_media": 225000,
+      king_size: 255000,
     },
   },
   {
@@ -251,10 +251,10 @@ export const products = [
 
     tipo: "por_tamano",
     precios: {
-      "1_plaza": 165000,
-      "2_plazas": 195000,
-      "2_plazas_y_media": 215000,
-      "king_size": 255000,
+      "1_plaza": 205000,
+      "2_plazas": 235000,
+      "2_plazas_y_media": 255000,
+      king_size: 285000,
     },
   },
   {
@@ -270,8 +270,8 @@ export const products = [
     images: ["/producto15-A.jpeg"],
 
     precios: {
-      "1_plaza": 145000,
-      "1_plazas_y_media": 175000,
+      "1_plaza": 175000,
+      "1_plazas_y_media": 195000,
     },
   },
   {
@@ -290,7 +290,7 @@ export const products = [
       "1_plaza": 295000,
       "2_plazas": 380000,
       "2_plazas_y_media": 420000,
-      "king_size": 560000,
+      king_size: 560000,
     },
   },
   {
@@ -309,7 +309,7 @@ export const products = [
       "1_plaza": 185000,
       "2_plazas": 215000,
       "2_plazas_y_media": 245000,
-      "king_size": 285000,
+      king_size: 285000,
     },
   },
   {
@@ -328,7 +328,7 @@ export const products = [
       "1_plaza": 185000,
       "2_plazas": 215000,
       "2_plazas_y_media": 245000,
-      "king_size": 285000,
+      king_size: 285000,
     },
   },
   {
@@ -344,10 +344,10 @@ export const products = [
     images: ["/producto19-A.png"],
 
     precios: {
-      "1_plaza": 165000,
-      "2_plazas": 205000,
-      "2_plazas_y_media": 225000,
-      "king_size": 275000,
+      "1_plaza": 108000,
+      "2_plazas": 119000,
+      "2_plazas_y_media": 128000,
+      king_size: 153000,
     },
   },
   {
@@ -366,7 +366,7 @@ export const products = [
       "1_plaza": 165000,
       "2_plazas": 205000,
       "2_plazas_y_media": 225000,
-      "king_size": 275000,
+      king_size: 275000,
     },
   },
   {
@@ -385,7 +385,7 @@ export const products = [
       "1_plaza": 85000,
       "2_plazas": 110000,
       "2_plazas_y_media": 125000,
-      "king_size": 155000,
+      king_size: 155000,
     },
   },
   {
@@ -404,7 +404,7 @@ export const products = [
       "1_plaza": 155000,
       "2_plazas": 185000,
       "2_plazas_y_media": 205000,
-      "king_size": 245000,
+      king_size: 245000,
     },
   },
   {
@@ -423,7 +423,7 @@ export const products = [
       "1_plaza": 45000,
       "2_plazas": 60000,
       "2_plazas_y_media": 70000,
-      "king_size": 85000,
+      king_size: 85000,
     },
   },
   {
@@ -439,10 +439,10 @@ export const products = [
     images: ["/producto24-B.png"],
 
     precios: {
-      "1_plaza": 185000,
-      "2_plazas": 235000,
-      "2_plazas_y_media": 260000,
-      "king_size": 310000,
+      "1_plaza": 235000,
+      "2_plazas": 279000,
+      "2_plazas_y_media": 296000,
+      king_size: 365000,
     },
   },
   {
@@ -458,10 +458,10 @@ export const products = [
     images: ["/producto25-A.jpeg"],
 
     precios: {
-      "1_plaza": 45000,
-      "2_plazas": 60000,
-      "2_plazas_y_media": 70000,
-      "king_size": 85000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -477,10 +477,10 @@ export const products = [
     images: ["/producto26-A.jpg", "/producto26-B.jpg"],
 
     precios: {
-      "1_plaza": 45000,
-      "2_plazas": 60000,
-      "2_plazas_y_media": 70000,
-      "king_size": 85000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -496,7 +496,7 @@ export const products = [
       "1_plaza": 78000,
       "2_plazas": 89000,
       "2_plazas_y_media": 98000,
-      "king_size": 123000,
+      king_size: 123000,
     },
   },
   {
@@ -512,10 +512,10 @@ export const products = [
     images: ["/producto28-A.png"],
 
     precios: {
-      "1_plaza": 165000,
-      "2_plazas": 205000,
-      "2_plazas_y_media": 225000,
-      "king_size": 275000,
+      "1_plaza": 255000,
+      "2_plazas": 299000,
+      "2_plazas_y_media": 316000,
+      king_size: 385000,
     },
   },
   {
@@ -531,8 +531,8 @@ export const products = [
     precios: {
       "1_metro": 95000,
       "1_20_metros": 110000,
-      "1_50_metros": 125000,
-      "2_metros": 145000,
+      "1_50_metros": 135000,
+      "2_metros": 160000,
       personalizado: "consultar",
     },
   },
@@ -549,7 +549,7 @@ export const products = [
     images: ["/producto30-A.jpg"],
 
     precios: {
-      "unico" : 180000,
+      unico: 180000,
     },
   },
   {
@@ -564,10 +564,10 @@ export const products = [
     images: ["/producto31-A.jpg", "/producto31-B.png"],
 
     precios: {
-      "1_plaza": 55000,
-      "2_plazas": 75000,
-      "2_plazas_y_media": 85000,
-      "king_size": 105000,
+      "1_plaza": 65000,
+      "2_plazas": 85000,
+      "2_plazas_y_media": 95000,
+      king_size: 115000,
     },
   },
   {
@@ -583,10 +583,10 @@ export const products = [
     images: ["/producto32-A.jpeg"],
 
     precios: {
-      "1_plaza": 45000,
-      "2_plazas": 60000,
-      "2_plazas_y_media": 70000,
-      "king_size": 85000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -622,10 +622,10 @@ export const products = [
     images: ["/producto34-A.png"],
 
     precios: {
-      "1_plaza": 45000,
-      "2_plazas": 60000,
-      "2_plazas_y_media": 70000,
-      "king_size": 85000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -642,10 +642,10 @@ export const products = [
     images: ["/producto35-A.png"],
 
     precios: {
-      "1_plaza": 95000,
-      "2_plazas": 120000,
-      "2_plazas_y_media": 135000,
-      "king_size": 160000,
+      "1_plaza": 78000,
+      "2_plazas": 89000,
+      "2_plazas_y_media": 98000,
+      king_size: 123000,
     },
   },
   {
@@ -661,10 +661,10 @@ export const products = [
     images: ["/producto36-A.jpg"],
 
     precios: {
-      "1_plaza": 45000,
-      "2_plazas": 60000,
-      "2_plazas_y_media": 70000,
-      "king_size": 85000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -736,10 +736,10 @@ export const products = [
     images: ["/producto40-A.jpg"],
 
     precios: {
-      "1_plaza": 65000,
-      "2_plazas": 82000,
-      "2_plazas_y_media": 92000,
-      "king_size": 105000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -752,10 +752,10 @@ export const products = [
     mainImage: "/producto41.png",
     images: ["/producto41-A.jpg"],
     precios: {
-      "1_plaza": 85000,
-      "2_plazas": 105000,
-      "2_plazas_y_media": 120000,
-      "king_size": 145000,
+      "1_plaza": 78000,
+      "2_plazas": 89000,
+      "2_plazas_y_media": 98000,
+      king_size: 123000,
     },
   },
   {
@@ -768,10 +768,10 @@ export const products = [
     mainImage: "/producto42.png",
     images: ["/producto42-A.png"],
     precios: {
-      "1_plaza": 48000,
-      "2_plazas": 63000,
-      "2_plazas_y_media": 73000,
-      "king_size": 88000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -784,10 +784,10 @@ export const products = [
     mainImage: "/producto43.png",
     images: ["/producto43-A.png", "/producto43-B.png"],
     precios: {
-      "1_plaza": 52000,
-      "2_plazas": 68000,
-      "2_plazas_y_media": 78000,
-      "king_size": 93000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -803,10 +803,10 @@ export const products = [
     images: ["/producto44-A.png"],
 
     precios: {
-      "1_plaza": 165000,
-      "2_plazas": 205000,
-      "2_plazas_y_media": 225000,
-      "king_size": 275000,
+      "1_plaza": 108000,
+      "2_plazas": 119000,
+      "2_plazas_y_media": 128000,
+      king_size: 153000,
     },
   },
   {
@@ -819,10 +819,10 @@ export const products = [
     mainImage: "/producto45.png",
     images: ["/producto45-A.png"],
     precios: {
-      "1_plaza": 50000,
-      "2_plazas": 65000,
-      "2_plazas_y_media": 75000,
-      "king_size": 90000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -835,10 +835,10 @@ export const products = [
     mainImage: "/producto46.png",
     images: ["/producto46-A.png"],
     precios: {
-      "1_plaza": 52000,
-      "2_plazas": 67000,
-      "2_plazas_y_media": 77000,
-      "king_size": 92000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
   {
@@ -851,10 +851,10 @@ export const products = [
     mainImage: "/producto47.png",
     images: ["/producto47-A.png"],
     precios: {
-      "1_plaza": 47000,
-      "2_plazas": 62000,
-      "2_plazas_y_media": 72000,
-      "king_size": 87000,
+      "1_plaza": 37000,
+      "2_plazas": 44000,
+      "2_plazas_y_media": 54000,
+      king_size: 66000,
     },
   },
 ];
