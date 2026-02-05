@@ -7,6 +7,8 @@ import "../src/styles/catalogo.css";
 import "../src/styles/landing.css";
 import "../src/styles/pedido.css";
 import "../src/styles/navbar.css";
+import "../src/styles/personalizador.css";
+import Personalizador from "./components/Personalizador";
 import { useEffect } from "react";
 import PedidoPage from "./components/PedidoPage";
 
@@ -22,6 +24,7 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/catalogo" element={<CatalogPage />} />
         <Route path="/pedido" element={<PedidoPage />} />
+        <Route path="/personalizador" element={<Personalizador />} />
       </Routes>
     </Router>
   );
