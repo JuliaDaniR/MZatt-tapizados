@@ -65,6 +65,7 @@ const MainNavbar = () => {
           <li onClick={() => navigate("/pedido")}>Mi Pedido</li>
           <li><a href="/#contact-form">Contacto</a></li>
           <li><a href="/#fabrics">Telas</a></li>
+          <li onClick={() => navigate("/personalizador")}>Personalizador AI</li>
         </ul>
       </div>
     </nav>

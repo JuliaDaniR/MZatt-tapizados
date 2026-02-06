@@ -54,6 +54,11 @@
   opacity: 0.7;
 }
 
+.ai-link {
+  font-weight: bold;
+  color: var(--accent);
+}
+
 /* Carrito */
 .cart-icon {
   position: relative;
