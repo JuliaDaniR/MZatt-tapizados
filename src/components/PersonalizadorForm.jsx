@@ -1,43 +1,15 @@
 "use client";
 import { useState } from "react";
 
+// 🔒 Bloqueo automático en producción
+const EN_DESARROLLO = import.meta.env.MODE === "production";
+
 const coloresPorTela = {
-  chenille: [
-    "crudo",
-    "arena",
-    "teja",
-    "mostaza",
-    "petroleo",
-    "gris",
-    "rosa",
-    "oliva",
-    "azul",
-  ],
-  cuerina: [
-    "hueso",
-    "suela",
-    "marron",
-    "naranja",
-    "amarillo",
-    "rojo",
-    "fucsia",
-    "violeta",
-    "negro",
-  ],
-  pana: [
-    "crema",
-    "marron",
-    "amarillo",
-    "teal",
-    "naranja",
-    "rojo",
-    "rosa",
-    "violeta",
-    "azul",
-    "negro",
-  ],
-  lino: ["crudo", "arena", "gris", "beige"],
-  algodon: ["blanco", "gris", "negro"],
+  chenille: ["crudo","arena","teja","mostaza","petroleo","gris","rosa","oliva","azul"],
+  cuerina: ["hueso","suela","marron","naranja","amarillo","rojo","fucsia","violeta","negro"],
+  pana: ["crema","marron","amarillo","teal","naranja","rojo","rosa","violeta","azul","negro"],
+  lino: ["crudo","arena","gris","beige"],
+  algodon: ["blanco","gris","negro"],
 };
 
 const estilos = [
@@ -84,6 +56,8 @@ export default function PersonalizadorForm({ onGenerate }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (EN_DESARROLLO) return; // 🔒 Bloqueado en producción
     if (cooldown > 0) return;
 
     setLoading(true);
@@ -99,7 +73,7 @@ export default function PersonalizadorForm({ onGenerate }) {
 
     setCooldown(10);
     const interval = setInterval(() => {
-      setCooldown((prev) => {
+      setCooldown(prev => {
         if (prev <= 1) {
           clearInterval(interval);
           return 0;
@@ -110,43 +84,35 @@ export default function PersonalizadorForm({ onGenerate }) {
   };
 
   const coloresDisponibles = coloresPorTela[form.tela];
-  const estiloConBotones = ["capitone_profundo", "chesterfield"].includes(
-    form.estilo,
-  );
+  const estiloConBotones = ["capitone_profundo", "chesterfield"].includes(form.estilo);
   const estiloConTachas = ["wingback", "imperial"].includes(form.estilo);
 
   return (
     <form onSubmit={handleSubmit} className="formulario">
       <h2>Personaliza tu Respaldo</h2>
 
+      {EN_DESARROLLO && (
+        <p className="personalizador-warning" style={{ textAlign: "center" }}>
+          🚧 El personalizador está en desarrollo. Muy pronto disponible.
+        </p>
+      )}
+
       <div className="form-grid">
         <label>
           Ancho (cm)
-          <input
-            type="number"
-            name="ancho"
-            value={form.ancho}
-            onChange={handleChange}
-          />
+          <input type="number" name="ancho" value={form.ancho} onChange={handleChange}/>
         </label>
 
         <label>
           Alto (cm)
-          <input
-            type="number"
-            name="alto"
-            value={form.alto}
-            onChange={handleChange}
-          />
+          <input type="number" name="alto" value={form.alto} onChange={handleChange}/>
         </label>
 
         <label>
           Estilo
           <select name="estilo" value={form.estilo} onChange={handleChange}>
-            {estilos.map((e) => (
-              <option key={e.value} value={e.value}>
-                {e.label}
-              </option>
+            {estilos.map(e => (
+              <option key={e.value} value={e.value}>{e.label}</option>
             ))}
           </select>
         </label>
@@ -165,10 +131,8 @@ export default function PersonalizadorForm({ onGenerate }) {
         <label>
           Color
           <select name="color" value={form.color} onChange={handleChange}>
-            {coloresDisponibles.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
+            {coloresDisponibles.map(c => (
+              <option key={c} value={c}>{c}</option>
             ))}
           </select>
         </label>
@@ -200,30 +164,29 @@ export default function PersonalizadorForm({ onGenerate }) {
         <label className="full">
           Combo
           <select name="combo" value={form.combo} onChange={handleChange}>
-            {combos.map((c) => (
-              <option key={c.value} value={c.value}>
-                {c.label}
-              </option>
+            {combos.map(c => (
+              <option key={c.value} value={c.value}>{c.label}</option>
             ))}
           </select>
         </label>
 
         <label className="full">
           Detalles extra
-          <textarea
-            name="detalles"
-            value={form.detalles}
-            onChange={handleChange}
-          />
+          <textarea name="detalles" value={form.detalles} onChange={handleChange}/>
         </label>
       </div>
 
-      <button type="submit" disabled={loading || cooldown > 0}>
-        {loading
-          ? "Generando..."
-          : cooldown > 0
-            ? `Esperá ${cooldown}s`
-            : "Generar Imagen"}
+      <button
+        type="submit"
+        disabled={loading || cooldown > 0 || EN_DESARROLLO}
+      >
+        {EN_DESARROLLO
+          ? "Personalizador en desarrollo"
+          : loading
+            ? "Generando..."
+            : cooldown > 0
+              ? `Esperá ${cooldown}s`
+              : "Generar Imagen"}
       </button>
 
       {loading && <div className="loading-spinner"></div>}

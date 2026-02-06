@@ -5,6 +5,13 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Método no permitido" });
   }
 
+  // 🔒 Bloqueo automático si no hay API KEY en Vercel
+  if (!process.env.OPENAI_API_KEY) {
+    return res.status(503).json({
+      error: "El personalizador está en desarrollo. Muy pronto disponible.",
+    });
+  }
+
   try {
     const { prompt } = req.body;
 

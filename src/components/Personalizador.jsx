@@ -84,17 +84,27 @@ Requisitos visuales:
     return Math.round(base);
   };
 
+  const API_URL =
+    import.meta.env.MODE === "development"
+      ? "http://localhost:3001/generate"
+      : "/api/generate";
+
   const handleGenerate = async (formData) => {
     const prompt = generarPrompt(formData);
     const finalPrice = calcularPrecio(formData);
 
-    const res = await fetch("http://localhost:3001/generate", {
+    const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
     });
 
     const data = await res.json();
+
+    if (data.error) {
+      alert(data.error);
+      return;
+    }
 
     setImage(data.image);
     setPrecio(finalPrice);
